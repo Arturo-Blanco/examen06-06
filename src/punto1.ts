@@ -1,27 +1,27 @@
-let dimensionArray: number = 0;
-let v: number[] = new Array(dimensionArray);
+let dimensionArray = Number(prompt(`Ingrese la dimension del arreglo`)); // la dimension del arreglo debia solicitarse al principio
+let valoresAleatorios: number[] = new Array(dimensionArray); // Usar nombres mas explicitos para declarar variables
 let min: number;
 
 function cargaArreglo(dimensionArray: number) {
-  dimensionArray = Number(prompt(`Ingrese la dimension del arreglo`));
   for (let i = 0; i < dimensionArray; i++) {
-    v[i] = Math.floor(Math.random() * 100);
+    valoresAleatorios[i] = Math.floor(Math.random() * 1000);
   }
 }
 
-function menorValor(v: number[]) {
-  let menor: number = v[0]; // se inicializa menor con el primer valor del array, para tomar un valor mas chico si existiera
-  for (let i = 0; i < v.length; i++) {
-    if (v[i] < menor) {
-      menor = v[i];
+function menorValor(valoresAleatorios: number[]) {
+  let minimo: number = valoresAleatorios[0]; // se inicializa menor con el primer valor del array, para tomar un valor mas chico si existiera
+  for (let i = 0; i < valoresAleatorios.length; i++) {
+    if (valoresAleatorios[i] < minimo) {
+      minimo = valoresAleatorios[i];
     }
   }
-  min = menor;
+  min = minimo; // Se intenta resolver con un return pero no se logra hacer funcionar, da valores erroneos
 }
-function mostrarValores(menor: number, v: number[]) {
-  console.log(`El arreglo es ${v}`);
-  console.log(`El valor minimo es ${menor}`);
+
+function mostrarValores(valoresAleatorios: number[]) {
+  console.log(`El arreglo es ${valoresAleatorios}`);
+  console.log(`El valor minimo es ${min}`);
 }
 cargaArreglo(dimensionArray);
-menorValor(v);
-mostrarValores(min, v);
+menorValor(valoresAleatorios);
+mostrarValores(valoresAleatorios);
